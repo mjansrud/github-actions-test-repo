@@ -1,4 +1,4 @@
-name: Check pull-request branches
+name: Check branches
 
 on: [pull_request]
 
