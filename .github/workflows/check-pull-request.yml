@@ -14,5 +14,3 @@ jobs:
             echo "Error: Pull-request into master from a feature branch";
             exit 1;
           fi
-
-#TEST
