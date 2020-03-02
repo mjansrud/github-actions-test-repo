@@ -12,8 +12,22 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: git fetch --prune --unshallow
-      - name: Fetch url lookup table
+      - name: Define variables
+        id: vars
         run: |
-          echo Downloading artifact $ARTIFACT_ID
-          curl -L -o url-lookup-table.json "https://${GITHUB_PAT}@api.github.com/repos/navikt/nav-enonicxp-iac/contents/url-lookup/q0.json
-          echo "$(cat url-lookup-table.json)"
+          echo ::set-output name=VERSION::${GITHUB_REF##*/}
+          echo ::set-output name=RUN_ID::${GITHUB_RUN_ID}
+      - name: Check tag on master
+        run: |
+          if git branch -r --contains ${{ steps.vars.outputs.VERSION }} | grep master>/dev/null 2>&1
+          then echo "Version ${{ steps.vars.outputs.VERSION }} verified on master";
+          else echo "Version ${{ steps.vars.outputs.VERSION }} not found on master"; exit 1; fi
+      - uses: actions/setup-java@v1
+        with:
+          java-version: 11
+
+
+
+
+
+
