@@ -10,6 +10,7 @@ jobs:
       - run: git fetch --prune --unshallow
       - name: Fetch url lookup table
         run: |
+          echo "${GITHUB_PAT}"
           curl \
             --output url-lookup-table.json \
             --header "Authorization: token ${GITHUB_PAT}" \
