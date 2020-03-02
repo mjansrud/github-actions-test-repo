@@ -12,7 +12,7 @@ jobs:
         run: |
           curl \
             --remote-name url-lookup-table.json \
-            --header "Authorization: token ${{ secrets.GITHUB_PAT }}" \
+            --header "Authorization: Bearer ${{ secrets.GITHUB_PAT }}" \
             --header "Accept: application/vnd.github.v3.raw" \
             --location "https://api.github.com/repos/navikt/nav-enonicxp-iac/contents/url-lookup/q0.json"
           echo "$(cat url-lookup-table.json)"
