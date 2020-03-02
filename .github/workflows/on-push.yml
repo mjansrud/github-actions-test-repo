@@ -11,7 +11,7 @@ jobs:
       - name: Fetch url lookup table
         run: |
           curl \
-            --remote-name url-lookup-table.json \
+            --output url-lookup-table.json \
             --header "Authorization: Bearer ${{ secrets.GITHUB_PAT }}" \
             --header "Accept: application/vnd.github.v3.raw" \
             --location "https://api.github.com/repos/navikt/nav-enonicxp-iac/contents/url-lookup/q0.json"
