@@ -10,6 +10,5 @@ jobs:
       - run: git fetch --prune --unshallow
       - name: Fetch url lookup table
         run: |
-          echo Downloading artifact $ARTIFACT_ID
-          curl -L -o url-lookup-table.json "https://${GITHUB_PAT}@api.github.com/repos/navikt/nav-enonicxp-iac/contents/url-lookup/q0.json
+          curl -L -o url-lookup-table.json "https://${GITHUB_PAT}@api.github.com/repos/navikt/nav-enonicxp-iac/contents/url-lookup/q0.json"
           echo "$(cat url-lookup-table.json)"
